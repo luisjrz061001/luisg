@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invitación Especial</title>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        font-family: 'Segoe UI', sans-serif;
+        overflow: hidden;
+    }
+    .ventana, .pregunta, .detalle-viaje {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: linear-gradient(135deg, #00c6ff, #0072ff);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        z-index: 2;
+    }
+    .ventana p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+    .btn {
+        padding: 10px 25px;
+        margin: 10px;
+        font-size: 1em;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        color: white;
+    }
+    .btn-si { background: #28a745; }
+    .btn-no { background: #dc3545; }
+    .detalle-viaje {
+        background: url('https://cdn.pixabay.com/photo/2016/11/29/09/15/beach-1867271_1280.jpg') no-repeat center center/cover;
+        color: #fff;
+        z-index: 3;
+        display: none;
+    }
+    .sobre {
+        width: 100px;
+        height: 70px;
+        background: #fff;
+        position: relative;
+        margin-top: 20px;
+        cursor: pointer;
+        border: 2px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .hoja {
+        width: 90px;
+        height: 120px;
+        background: #fff;
+        position: absolute;
+        top: -120px;
+        left: 5px;
+        border: 1px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.9em;
+        display: none;
+        padding: 5px;
+        text-align: center;
+    }
+    .imagenes {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    .imagenes img {
+        width: 150px;
+        height: 100px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    }
+</style>
+</head>
+<body>
+
+<div class="ventana" id="ventana">
+    <p>Hola 🌟 estuve pensando mucho y sé que has tenido unos días muy difíciles 😔 y quiero hacer algo para alegrarte 😊. Siento feo que no te vas a poder ir de vacaciones 🏖️ y te mereces unas vacaciones porque eres una persona que siempre se esfuerza mucho en todo 💪✨ y necesitas descansar 😴. Por eso planeé esto para ti 📝. Tal vez no son vacaciones como tal pero quiero hacerte pasar un buen rato 🎉, que te diviertas y disfrutes tus "vacaciones" 💖.</p>
+    <button class="btn" id="btnContinuar">Continuar</button>
+</div>
+
+<div class="pregunta" id="pregunta" style="display:none">
+    <h1>¿Quieres ir de vacaciones? 🌴☀️</h1>
+    <button class="btn btn-si" onclick="responder('si')">¡Claro que sí!</button>
+    <button class="btn btn-no" onclick="responder('no')">No puedo :(</button>
+</div>
+
+<div class="detalle-viaje" id="detalle">
+    <audio autoplay loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" type="audio/mp3">
+    </audio>
+    <h1>Detalles del viaje 🌊</h1>
+    <p>Descripción del viaje: Un día lleno de diversión, relajación y sorpresas pensado solo para ti 💕.</p>
+    <div class="imagenes">
+        <img src="https://cdn.pixabay.com/photo/2016/11/18/16/09/beach-1836468_1280.jpg" alt="Playa">
+        <img src="https://cdn.pixabay.com/photo/2017/01/20/00/30/beach-1990260_1280.jpg" alt="Mar">
+    </div>
+    <div class="sobre" onclick="abrirSobre()">
+        📩 Abrir sobre
+        <div class="hoja" id="hoja">¡Eres increíble, mereces ser feliz y disfrutar al máximo! ❤️</div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('btnContinuar').addEventListener('click', function() {
+        document.getElementById('ventana').style.display = 'none';
+        document.getElementById('pregunta').style.display = 'flex';
+    });
+
+    function responder(respuesta) {
+        if(respuesta === 'si') {
+            document.getElementById('pregunta').style.display = 'none';
+            document.getElementById('detalle').style.display = 'flex';
+        } else {
+            alert('Hasta la próxima 😢');
+        }
+    }
+
+    function abrirSobre() {
+        const hoja = document.getElementById('hoja');
+        hoja.style.display = hoja.style.display === 'block' ? 'none' : 'block';
+    }
+</script>
+
+</body>
+</html>
